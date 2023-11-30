@@ -142,9 +142,9 @@ router.post("/login", async (req, res, next) => {
 //here to validate the token, get the payload and send it to FE.
 //this indicates if user is logged in or not. If logged in => who is it.
 //we need a middleware 
-router.get('/verify', isTokenValid, async (req, res,next) => {
+router.get('/verify', isTokenValid,async (req, res,next) => {
 console.log(req.payload);
-res.json({payload: req.payload  })
+res.json({payload: req.payload})
 })
 
 module.exports = router;

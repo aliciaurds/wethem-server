@@ -20,5 +20,19 @@ function isTokenValid(req, res, next) {
 
 
 }
+function isAdmin(req, res, next) {
+    // user role information is stored in req.payload
+    //best practices: check also if exists
+    if (req.payload && req.payload.role === 'admin') {
+      
+      next(); //continue if admin 
+    } else {
+      // If is not an admin, return an unauthorized response
+      res.status(403).json("Unauthorized: User is not an admin");
+    }
+  }
 
-module.exports = isTokenValid;
+module.exports = {
+    isTokenValid,
+    isAdmin
+}
