@@ -7,4 +7,8 @@ router.get("/", (req, res, next) => {
 const authRouter = require("./auth.routes");
 router.use("/auth", authRouter)
 
+const productRouter = require("./product.routes")
+router.use("/products", productRouter)
+
+
 module.exports = router;

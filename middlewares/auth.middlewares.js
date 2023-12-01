@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-function isTokenValid(req, res, next) {
+function isTokenValid (req, res, next) {
   console.log(req.headers); // auth info
 
   //use of try catch as method to check the code, manage errors

@@ -14,15 +14,18 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true
     },
-    size: String,
+    size: {
+      type: String,
+      enum: ['small', 'medium', 'large']
+    },
     color: {
         type: String,
         enum: ['black', 'white', 'green', 'yellow', 'grey', 'orange', 'pink', 'grey', 'brown', 'purple', 'red']
     }, 
-    image_url: String,
+    image: String,
     category:{
         type: String,
-        enum: ['skirts', 'dresses', 'suits', 'shirts', 'trousers', 'jeans', 'sport', 'coats', 'sweaters and jackets', 'accessories']
+        enum: ['skirts', 'dresses', 'suits', 'shirts', 'trousers', 'jeans', 'sport', 'coats', 'jackets', 'hoodies', 'accessories']
 
     }
   },

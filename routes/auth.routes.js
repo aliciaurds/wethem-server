@@ -5,7 +5,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 //require middleware
-const isTokenValid = require("../middlewares/auth.middlewares")
+const {isTokenValid} = require("../middlewares/auth.middlewares")
 
 //*POST "/api/auth/signup" => get data from the user and creates it inside the DB
 router.post("/signup", async (req, res, next) => {
@@ -16,7 +16,10 @@ router.post("/signup", async (req, res, next) => {
     lastName,
     username,
     email,
-    address,
+    street,
+    city,
+    country,
+    postalCode,
     dateOfBirth,
     password,
     profilePic,
@@ -30,7 +33,10 @@ router.post("/signup", async (req, res, next) => {
     !username ||
     !email ||
     !password ||
-    //!address ||
+    !street ||
+    !city ||
+    !country ||
+    !postalCode ||
     !dateOfBirth ||
     !profilePic
   ) {
@@ -86,7 +92,10 @@ router.post("/signup", async (req, res, next) => {
       username,
       email,
       password: hashPass,
-      address,
+      street,
+      city,
+      country,
+      postalCode,
       dateOfBirth,
       profilePic,
     });
@@ -110,7 +119,7 @@ router.post("/login", async (req, res, next) => {
     //validate user is registered
     const foundUser = await User.findOne({ email: email})
     if(!foundUser) {
-        res.status(404).json({errMessage: "User not registered"})
+        res.status(400).json({errMessage: "User not registered"})
         return;
     }
     //validate password
@@ -142,7 +151,7 @@ router.post("/login", async (req, res, next) => {
 //here to validate the token, get the payload and send it to FE.
 //this indicates if user is logged in or not. If logged in => who is it.
 //we need a middleware 
-router.get('/verify', isTokenValid,async (req, res,next) => {
+router.get('/verify', isTokenValid, (req, res,next) => {
 console.log(req.payload);
 res.json({payload: req.payload})
 })
