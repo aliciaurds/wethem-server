@@ -5,17 +5,24 @@ const router = require('express').Router();
 
 //*GET "/api/products" => send all data from products list. Only name and image to be displayed
 router.get("/", async (req, res, next) => {
-    try{
-        const allProducts = await Product.find().select({name: 1, image: 1})
+    try {
+        // Obtener el parámetro de consulta 'category' de la solicitud GET
+        const category = req.query.category;
 
-        res.json(allProducts)
-
+        // Verificar si se proporciona el parámetro 'category'
+        if (category) {
+            // Si 'category' está presente, filtrar los productos por esa categoría
+            const filteredProducts = await Product.find({ category }).select({ name: 1, image: 1 });
+            res.json(filteredProducts);
+        } else {
+            // Si no se proporciona 'category', devolver todos los productos con solo nombre e imagen
+            const allProducts = await Product.find().select({ name: 1, image: 1 });
+            res.json(allProducts);
+        }
+    } catch (error) {
+        next(error);
     }
-    catch(error){
-       next(error);
-    }
-
-})
+});
 
 //*POST "api/products/create" => create products 
 router.post('/create', isTokenValid, isAdmin, async (req, res, next) =>{
@@ -58,7 +65,7 @@ router.delete("/:productId/delete", isTokenValid, isAdmin, async (req, res, next
 })
 
 //*PUT "/api/products/:productId/update" => update a specific product
-router.put("/:productId/update", async (req, res, next) => {
+router.put("/:productId/update", isTokenValid, isAdmin,  async (req, res, next) => {
     const {productId} = req.params;
     const { name, description, price, size, color, category, image } = req.body;
     try{
@@ -67,6 +74,7 @@ router.put("/:productId/update", async (req, res, next) => {
     }
     catch(error){
         next(error);
+       
     }
 })
 

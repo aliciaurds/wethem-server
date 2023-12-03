@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Stripped Shirt",
+        "description": "black and whites stripped shirt",
+        "price": "30",
+        "size" : "small",
+        "color" : "black",
+        "image" : "https://images.asos-media.com/products/asos-design-oversized-velour-striped-long-sleeve-t-shirt-in-black-and-white/10341106-1-blackwhite?$XXL$&wid=513&fit=constrain",
+        "category" : "shirts"
+    },
+    {
+        "name": "Blue Jeans",
+        "description": "classic blue jeans",
+        "price": 50,
+        "size": "medium",
+        "color": "blue",
+        "image": "https://cdnc.lystit.com/photos/36f6-2016/02/09/asos-lightblue-straight-jeans-in-cropped-length-with-raw-edge-hem-product-1-078757532-normal.jpeg",
+        "category": "jeans"
+      },
+      {
+        "name": "Summer Suit",
+        "description": "light and flowy summer suit",
+        "price": 45,
+        "size": "medium",
+        "color": "purple",
+        "image": "https://cdn.mysnapp.co.uk/images/original/5f77522aaab19.jpg",
+        "category": "dresses"
+      },
+      {
+        "name": "Running Jacket",
+        "description": "comfortable and warm",
+        "price": 70,
+        "size": "large",
+        "color": "grey",
+        "image": "https://therunningoutlet.co.uk/wp-content/uploads/2019/07/asics-mens-ACCELERATE-Jacket-2011A245-022-front.jpg",
+        "category": "sport"
+      },
+      {
+        "name": "Leather Jacket",
+        "description": "stylish leather jacket",
+        "price": 120,
+        "size": "medium",
+        "color": "black",
+        "image": "https://www.thefashionisto.com/wp-content/uploads/2021/04/ASOS-DESIGN-leather-biker-jacket-with-zips-in-black.jpg",
+        "category": "jackets"
+      }
+]
