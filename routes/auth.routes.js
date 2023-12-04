@@ -10,7 +10,7 @@ const {isTokenValid} = require("../middlewares/auth.middlewares")
 //*POST "/api/auth/signup" => get data from the user and creates it inside the DB
 router.post("/signup", async (req, res, next) => {
   console.log(req.body);
-
+  
   const {
     firstName,
     lastName,

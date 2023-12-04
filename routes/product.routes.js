@@ -6,10 +6,10 @@ const router = require('express').Router();
 //*GET "/api/products" => send all data from products list. Only name and image to be displayed
 router.get("/", async (req, res, next) => {
     try {
-        // Obtener el parámetro de consulta 'category' de la solicitud GET
+        // Obtener el parámetro de consulta 'category'
         const category = req.query.category;
+        console.log(req.query.category);
 
-        // Verificar si se proporciona el parámetro 'category'
         if (category) {
             // Si 'category' está presente, filtrar los productos por esa categoría
             const filteredProducts = await Product.find({ category }).select({ name: 1, image: 1 });

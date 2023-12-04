@@ -1,47 +1,101 @@
 [
-    {
-        "name": "Stripped Shirt",
-        "description": "black and whites stripped shirt",
-        "price": "30",
-        "size" : "small",
-        "color" : "black",
-        "image" : "https://images.asos-media.com/products/asos-design-oversized-velour-striped-long-sleeve-t-shirt-in-black-and-white/10341106-1-blackwhite?$XXL$&wid=513&fit=constrain",
-        "category" : "shirts"
-    },
-    {
-        "name": "Blue Jeans",
-        "description": "classic blue jeans",
-        "price": 50,
-        "size": "medium",
-        "color": "blue",
-        "image": "https://cdnc.lystit.com/photos/36f6-2016/02/09/asos-lightblue-straight-jeans-in-cropped-length-with-raw-edge-hem-product-1-078757532-normal.jpeg",
-        "category": "jeans"
-      },
-      {
-        "name": "Summer Suit",
-        "description": "light and flowy summer suit",
-        "price": 45,
-        "size": "medium",
-        "color": "purple",
-        "image": "https://cdn.mysnapp.co.uk/images/original/5f77522aaab19.jpg",
-        "category": "dresses"
-      },
-      {
-        "name": "Running Jacket",
-        "description": "comfortable and warm",
-        "price": 70,
-        "size": "large",
-        "color": "grey",
-        "image": "https://therunningoutlet.co.uk/wp-content/uploads/2019/07/asics-mens-ACCELERATE-Jacket-2011A245-022-front.jpg",
-        "category": "sport"
-      },
-      {
-        "name": "Leather Jacket",
-        "description": "stylish leather jacket",
-        "price": 120,
-        "size": "medium",
-        "color": "black",
-        "image": "https://www.thefashionisto.com/wp-content/uploads/2021/04/ASOS-DESIGN-leather-biker-jacket-with-zips-in-black.jpg",
-        "category": "jackets"
-      }
+  {
+    "name": "Stripped Shirt",
+    "description": "black and whites stripped shirt",
+    "price": 30,
+    "size": "small",
+    "color": "black",
+    "image": "https://images.asos-media.com/products/asos-design-oversized-velour-striped-long-sleeve-t-shirt-in-black-and-white/10341106-1-blackwhite?$XXL$&wid=513&fit=constrain",
+    "category": "shirts"
+  },
+  {
+    "name": "Blue Jeans",
+    "description": "classic blue jeans",
+    "price": 50,
+    "size": "medium",
+    "color": "blue",
+    "image": "https://cdnc.lystit.com/photos/36f6-2016/02/09/asos-lightblue-straight-jeans-in-cropped-length-with-raw-edge-hem-product-1-078757532-normal.jpeg",
+    "category": "jeans"
+  },
+  {
+    "name": "Summer Suit",
+    "description": "light and flowy summer suit",
+    "price": 45,
+    "size": "medium",
+    "color": "purple",
+    "image": "https://cdn.mysnapp.co.uk/images/original/5f77522aaab19.jpg",
+    "category": "suits"
+  },
+  {
+    "name": "Running Jacket",
+    "description": "comfortable and warm",
+    "price": 70,
+    "size": "large",
+    "color": "grey",
+    "image": "https://therunningoutlet.co.uk/wp-content/uploads/2019/07/asics-mens-ACCELERATE-Jacket-2011A245-022-front.jpg",
+    "category": "sport"
+  },
+  {
+    "name": "Leather Jacket",
+    "description": "stylish leather jacket",
+    "price": 120,
+    "size": "medium",
+    "color": "black",
+    "image": "https://www.thefashionisto.com/wp-content/uploads/2021/04/ASOS-DESIGN-leather-biker-jacket-with-zips-in-black.jpg",
+    "category": "jackets"
+  },
+  {
+    "name": "Classy Skirt",
+    "description": "Elegant skirt",
+    "price": 55,
+    "size": "small",
+    "color": "pink",
+    "image": "https://i.pinimg.com/736x/5c/95/b4/5c95b4dc3bacf5ce6fb6ba393a486a35.jpg",
+    "category": "skirts"
+  },
+  {
+    "name": "Business Formal Dress",
+    "description": "Classic business formal dress",
+    "price": 200,
+    "size": "large",
+    "color": "black",
+    "image": "https://i.pinimg.com/originals/7e/3e/e8/7e3ee834384eb17170366f412b89f156.jpg",
+    "category": "dresses"
+  },
+  {
+    "name": "Slim Fit Trousers",
+    "description": "Modern slim fit trousers for any occasion",
+    "price": 75,
+    "size": "medium",
+    "color": "grey",
+    "image": "https://images.asos-media.com/products/stradivarius-wide-leg-relaxed-dad-trousers-in-grey/201385176-1-grey?$n_640w$&wid=513&fit=constrain",
+    "category":"trousers"
+  },
+  {
+    "name": "Winter Parka Coat",
+    "description": "Insulated winter parka coat for extreme warmth",
+    "price": 150,
+    "size": "large",
+    "color": "green",
+    "image": "https://i.pinimg.com/originals/93/1a/ad/931aad82fd55eef9dc823d71f90af582.jpg",
+    "category":"coats"
+  },
+  {
+    "name": "Cropped  Hoodie",
+    "description": "Comfortable hoodie with a unique material",
+    "price": 40,
+    "size": "medium",
+    "color": "orange",
+    "image": "https://cdna.lystit.com/photos/asos/8062ac82/asos-gold-Cropped-Oversized-Hoodie-In-Velour-In-Orange.jpeg",
+    "category":"hoodies"
+  },
+  {
+    "name": "Leather Belt",
+    "description": "Genuine leather belt with a stylish buckle",
+    "price": 25,
+    "size": "small",
+    "color": "brown",
+    "image": "https://images4.alaindelon.sk/obrazky/produkt/mfi2/7c2e0c06abe456cf048a3afad405fbfe/leather-belt.jpg",
+    "category":"accessories"
+  }
 ]

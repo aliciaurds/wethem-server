@@ -17,8 +17,6 @@ function isTokenValid (req, res, next) {
     //if token does not exists, it's not valid or there isn't headers:
     res.status(401).json("Token does not exist, or is not valid");
   }
-
-
 }
 function isAdmin(req, res, next) {
     // user role information is stored in req.payload
@@ -31,8 +29,10 @@ function isAdmin(req, res, next) {
       res.status(403).json("Unauthorized: User is not an admin");
     }
   }
+ 
 
 module.exports = {
     isTokenValid,
-    isAdmin
+    isAdmin,
+
 }
