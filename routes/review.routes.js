@@ -2,6 +2,7 @@ const Review = require("../models/Review.model");
 const Product = require("../models/Product.model");
 const router = require("express").Router();
 const { isTokenValid} = require("../middlewares/auth.middlewares");
+const User = require("../models/User.model");
 
 //* POST "/api/review/:productId/add" => Add a review to a specific product
 router.post("/:productId/add", isTokenValid, async (req, res, next) => {
@@ -16,13 +17,20 @@ router.post("/:productId/add", isTokenValid, async (req, res, next) => {
 
     const productExists = await Product.findById(productId);
     if (!productExists) {
-      return res.status(404).json({ error: "Product not found" });
+      return res.status(404).json("Product not found");
     }
+    // Find the user to get the username
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json("User not found");
+    }
+
 
     const newReview = await Review.create({
       comment,
       rating,
       user: userId,
+      username: user.username,
       product: productId,
     });
     res.status(201).json(newReview);

@@ -15,4 +15,7 @@ router.use("/upload", uploadRoutes);
 
 const reviewRoutes = require("./review.routes");
 router.use("/review", reviewRoutes);
+
+const userRoutes = require("./user.routes");
+router.use("/profile", userRoutes);
 module.exports = router;
