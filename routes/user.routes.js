@@ -107,7 +107,7 @@ router.delete('/wishlist/:productId/delete', isTokenValid, async (req, res, next
 router.get('/shoppingCart', isTokenValid, async (req, res, next) => {
   try {
     const userId = req.payload._id;  
-    const user = await User.findById(userId).populate('shoppingCart', 'name image');
+    const user = await User.findById(userId).populate('shoppingCart', 'name image price');
 
     res.json(user.shoppingCart);
   } catch (err) {
