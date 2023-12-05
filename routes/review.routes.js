@@ -17,20 +17,20 @@ router.post("/:productId/add", isTokenValid, async (req, res, next) => {
 
     const productExists = await Product.findById(productId);
     if (!productExists) {
-      return res.status(404).json("Product not found");
+      return res.status(400).json("Product not found");
     }
     // Find the user to get the username
     const user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json("User not found");
+      return res.status(400).json("User not found");
     }
 
 
     const newReview = await Review.create({
       comment,
       rating,
-      user: userId,
-      username: user.username,
+      user: userId, //todo intentar acceder aqui
+      username: user.username, //todo mala practica => deberia ser dinamico
       product: productId,
     });
     res.status(201).json(newReview);
@@ -45,7 +45,7 @@ router.get("/:productId/reviews", async (req, res, next) => {
     const { productId } = req.params;
 
     // Find all reviews for the specific product
-    const reviews = await Review.find({ product: productId });
+    const reviews = await Review.find({ product: productId }); //todo populate para username
 
     res.status(200).json(reviews);
   } catch (error) {
@@ -67,17 +67,20 @@ router.delete('/:reviewId/delete', isTokenValid, async (req, res, next) => {
     
       // Check if the review exists
       if (!review) {
-        return res.status(404).json('Review not found');
+        return res.status(400).json('Review not found');
       }
     
-      // Check if the user is the owner of the review or an admin
-      if (review.user.toString() === userId || userRole === 'admin') {
-        // Delete the review
-        await Review.findByIdAndDelete(reviewId);
-        return res.status(200).json( 'Review deleted successfully');
+      // Check if the user is no tthe owner of the review or not an admin
+      if (review.user.toString() !== userId && userRole !== 'admin') {
+        
+        return res.status(403).json( 'Unauthorized' );
       }
+      // Delete the review
+      await Review.findByIdAndDelete(reviewId);
+      return res.status(200).json( 'Review deleted successfully');
+      
     
-      return res.status(403).json( 'Unauthorized' );
+      
     } catch (error) {
       next(error);
     }

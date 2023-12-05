@@ -9,7 +9,7 @@ router.get('/', isTokenValid, async (req, res, next) => {
     const user = await User.findById(userId)
 
     if (!user) {
-      return res.status(404).json('User not found');
+      return res.status(400).json('User not found');
     }
 
     res.json(user); //gives back user info
@@ -99,6 +99,43 @@ router.delete('/wishlist/:productId/delete', isTokenValid, async (req, res, next
     await User.findByIdAndUpdate(userId, { $pull: { wishlist: productId } });
 
     res.json('Removed from wishlist');
+  } catch (err) {
+    next(err);
+  }
+});
+//* GET "api/profile/shoppingCart" => user's shoppingCart
+router.get('/shoppingCart', isTokenValid, async (req, res, next) => {
+  try {
+    const userId = req.payload._id;  
+    const user = await User.findById(userId).populate('shoppingCart', 'name image');
+
+    res.json(user.shoppingCart);
+  } catch (err) {
+    next(err);
+  }
+});
+//* POST "api/profile/shoppingCart/:productId/add" add product to user's shoppingCart
+router.post('/shoppingCart/:productId/add', isTokenValid, async (req, res, next) => {
+  try {
+    const userId = req.payload._id;
+    const productId = req.params.productId;
+
+    await User.findByIdAndUpdate(userId, { $addToSet: { shoppingCart: productId } });
+
+    res.json('Added to shoppingCart');
+  } catch (err) {
+    next(err);
+  }
+});
+//* DELETE "api/profile/shoppingCart/:productId/delete => remove product from user's shoppingCart
+router.delete('/shoppingCart/:productId/delete', isTokenValid, async (req, res, next) => {
+  try {
+    const userId = req.payload._id;
+    const productId = req.params.productId;
+
+    await User.findByIdAndUpdate(userId, { $pull: { shoppingCart: productId } });
+
+    res.json('Removed from shoppingCart');
   } catch (err) {
     next(err);
   }

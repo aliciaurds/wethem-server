@@ -60,6 +60,13 @@ const userSchema = new mongoose.Schema(
       }
       
     ],
+    shoppingCart:[
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product", 
+      }
+      
+    ],
  
     profilePic: String,
   },
