@@ -78,5 +78,5 @@ router.put("/:productId/update", isTokenValid, isAdmin,  async (req, res, next) 
     }
 })
 
-//TODO ruta para añadir a wislist
+
 module.exports = router; 

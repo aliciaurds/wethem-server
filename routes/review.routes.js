@@ -29,8 +29,7 @@ router.post("/:productId/add", isTokenValid, async (req, res, next) => {
     const newReview = await Review.create({
       comment,
       rating,
-      user: userId, //todo intentar acceder aqui
-      username: user.username, //todo mala practica => deberia ser dinamico
+      user: userId, 
       product: productId,
     });
     res.status(201).json(newReview);
@@ -45,7 +44,7 @@ router.get("/:productId/reviews", async (req, res, next) => {
     const { productId } = req.params;
 
     // Find all reviews for the specific product
-    const reviews = await Review.find({ product: productId }); //todo populate para username
+    const reviews = await Review.find({ product: productId }).populate("user", "username")
 
     res.status(200).json(reviews);
   } catch (error) {
