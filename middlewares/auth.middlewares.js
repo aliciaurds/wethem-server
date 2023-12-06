@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-function isTokenValid (req, res, next) {
+function isTokenValid(req, res, next) {
   console.log(req.headers); // auth info
 
   //use of try catch as method to check the code, manage errors
@@ -19,20 +19,28 @@ function isTokenValid (req, res, next) {
   }
 }
 function isAdmin(req, res, next) {
-    // user role information is stored in req.payload
-    //best practices: check also if exists
-    if (req.payload && req.payload.role === 'admin') {
-      
-      next(); //continue if admin 
-    } else {
-      // If is not an admin, return an unauthorized response
-      res.status(403).json("Unauthorized: User is not an admin");
-    }
+  // user role information is stored in req.payload
+  //best practices: check also if exists
+  if (req.payload && req.payload.role === "admin") {
+    next(); //continue if admin
+  } else {
+    // If is not an admin, return an unauthorized response
+    res.status(403).json("User is not an admin");
   }
- 
-
-module.exports = {
-    isTokenValid,
-    isAdmin,
-
 }
+function isUserNotLoggedIn(req, res, next) {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    jwt.verify(token, process.env.TOKEN_SECRET);
+    
+
+    res.status(403).json("User is logged in");
+  } catch (err) {
+    next();
+  }
+}
+module.exports = {
+  isTokenValid,
+  isAdmin,
+  isUserNotLoggedIn,
+};

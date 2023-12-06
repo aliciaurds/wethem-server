@@ -5,10 +5,10 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 //require middleware
-const {isTokenValid} = require("../middlewares/auth.middlewares")
+const {isTokenValid, isUserNotLoggedIn} = require("../middlewares/auth.middlewares")
 
 //*POST "/api/auth/signup" => get data from the user and creates it inside the DB
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", isUserNotLoggedIn, async (req, res, next) => {
   console.log(req.body);
   
   const {
@@ -105,7 +105,7 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 //*POST "/api/auth/login" => get credentials from user and validate
-router.post("/login", async (req, res, next) => {
+router.post("/login", isUserNotLoggedIn, async (req, res, next) => {
   console.log(req.body);
   //again validate that the fiels are not empty
   const { email, password } = req.body;
