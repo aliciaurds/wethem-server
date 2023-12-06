@@ -155,5 +155,34 @@ router.get('/verify', isTokenValid, (req, res,next) => {
 console.log(req.payload);
 res.json({payload: req.payload})
 })
+//*PUT "/api/auth/change-password" => update password
+router.put("/change-password", isTokenValid, async (req, res, next) => {
+  const { newPassword } = req.body;
 
+  if (!newPassword) {
+    res.status(400).json("must be filled",);
+    return;
+  }
+
+  try {
+    const user = await User.findById(req.payload._id);
+
+    if (!user) {
+      res.status(404).json("User not found");
+      return;
+    }
+
+    // Encripta la nueva contraseña
+    const salt = await bcrypt.genSalt(12);
+    const hashNewPassword = await bcrypt.hash(newPassword, salt);
+
+    // Actualiza la contraseña del usuario en la base de datos
+    user.password = hashNewPassword;
+    await user.save();
+
+    res.status(200).json("Password updated successfully");
+  } catch (error) {
+    next(error);
+  }
+});
 module.exports = router;
