@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/User.model');
 const { isTokenValid } = require('../middlewares/auth.middlewares');
+const Review = require('../models/Review.model');
 
 //* GET "/api/profile" => get info from user profile
 router.get('/', isTokenValid, async (req, res, next) => {
@@ -140,5 +141,25 @@ router.delete('/shoppingCart/:productId/delete', isTokenValid, async (req, res, 
     next(err);
   }
 });
+//* DELETE "api/profile/delete-account
+router.delete("/delete-account", isTokenValid, async (req, res, next) => {
+  try {
+    const userId = req.payload._id;
 
+    // Encuentra y elimina al usuario
+    const deletedUser = await User.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+      return res.status(400).json("User not found");
+    }
+
+    // Cambiar el autor de los comentarios asociados al usuario eliminado
+    //$set para actualizar los valores de un documento
+    await Review.updateMany({ user: userId }, { $set: { user: null, username: 'Deleted User' } });
+
+    res.json("User account deleted successfully. Comments updated");
+  } catch (err) {
+    next(err);
+  }
+});
 module.exports = router;
