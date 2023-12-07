@@ -155,7 +155,7 @@ router.delete("/delete-account", isTokenValid, async (req, res, next) => {
 
     // Cambiar el autor de los comentarios asociados al usuario eliminado
     //$set para actualizar los valores de un documento
-    await Review.updateMany({ user: userId }, { $set: { user: null, username: 'Deleted User' } });
+    await Review.updateMany({ user: userId }, { $set: { user: null } });
 
     res.json("User account deleted successfully. Comments updated");
   } catch (err) {
