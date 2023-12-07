@@ -19,4 +19,7 @@ router.use("/review", reviewRoutes);
 const userRoutes = require("./user.routes");
 router.use("/profile", userRoutes);
 
+const paymentRoutes = require("./payment.routes")
+router.use("/payment", paymentRoutes)
+
 module.exports = router;

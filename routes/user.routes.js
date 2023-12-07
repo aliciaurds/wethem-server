@@ -74,8 +74,8 @@ router.get('/wishlist', isTokenValid, async (req, res, next) => {
   }
 });
 
-//* POST "api/profile/wishlist/:productId/add" add product to user's wishlist
-router.post('/wishlist/:productId/add', isTokenValid, async (req, res, next) => {
+//* PATCH "api/profile/wishlist/:productId/add" add product to user's wishlist
+router.patch('/wishlist/:productId/add', isTokenValid, async (req, res, next) => {
   try {
     const userId = req.payload._id;
     const productId = req.params.productId;
@@ -89,8 +89,8 @@ router.post('/wishlist/:productId/add', isTokenValid, async (req, res, next) => 
   }
 });
 
-//* DELETE "api/profile/wishlist/:productId/delete => remove product from user's wishlist
-router.delete('/wishlist/:productId/delete', isTokenValid, async (req, res, next) => {
+//* PATCH "api/profile/wishlist/:productId/remove => remove product from user's wishlist 
+router.patch('/wishlist/:productId/remove', isTokenValid, async (req, res, next) => {
   try {
     const userId = req.payload._id;
     const productId = req.params.productId;
@@ -115,8 +115,8 @@ router.get('/shoppingCart', isTokenValid, async (req, res, next) => {
     next(err);
   }
 });
-//* POST "api/profile/shoppingCart/:productId/add" add product to user's shoppingCart
-router.post('/shoppingCart/:productId/add', isTokenValid, async (req, res, next) => {
+//* PATCH "api/profile/shoppingCart/:productId/add" add product to user's shoppingCart 
+router.patch('/shoppingCart/:productId/add', isTokenValid, async (req, res, next) => {
   try {
     const userId = req.payload._id;
     const productId = req.params.productId;
@@ -128,8 +128,8 @@ router.post('/shoppingCart/:productId/add', isTokenValid, async (req, res, next)
     next(err);
   }
 });
-//* DELETE "api/profile/shoppingCart/:productId/delete => remove product from user's shoppingCart
-router.delete('/shoppingCart/:productId/delete', isTokenValid, async (req, res, next) => {
+//* PATCH "api/profile/shoppingCart/:productId/remove => remove product from user's shoppingCart
+router.patch('/shoppingCart/:productId/remove', isTokenValid, async (req, res, next) => {
   try {
     const userId = req.payload._id;
     const productId = req.params.productId;
