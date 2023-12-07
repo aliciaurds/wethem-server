@@ -19,11 +19,11 @@
   },
   {
     "name": "Summer Suit",
-    "description": "light and flowy summer suit",
+    "description": "light summer suit",
     "price": 45,
     "size": "medium",
-    "color": "purple",
-    "image": "https://cdn.mysnapp.co.uk/images/original/5f77522aaab19.jpg",
+    "color": "brown",
+    "image": "https://res.cloudinary.com/dxatd4ai4/image/upload/v1701970673/wethem-app/tempsnip_slrwp1.png",
     "category": "suits"
   },
   {
@@ -90,12 +90,21 @@
     "category":"hoodies"
   },
   {
-    "name": "Leather Belt",
-    "description": "Genuine leather belt with a stylish buckle",
-    "price": 25,
+    "name": "Winter Hat",
+    "description": "Cozy hat with a unique material",
+    "price": 15,
     "size": "small",
-    "color": "brown",
-    "image": "https://images4.alaindelon.sk/obrazky/produkt/mfi2/7c2e0c06abe456cf048a3afad405fbfe/leather-belt.jpg",
+    "color": "black",
+    "image": "https://res.cloudinary.com/dxatd4ai4/image/upload/v1701969645/wethem-app/Captura_f83qtl.jpg",
     "category":"accessories"
+  },
+  {
+    "name": "Oversize Hoodie",
+    "description": "Long sleeves, street style hoddie",
+    "price": 35,
+    "size": "medium",
+    "color": "pink",
+    "image": "https://res.cloudinary.com/dxatd4ai4/image/upload/v1701969919/wethem-app/fasf_dcnpi7.jpg",
+    "category":"hoodies"
   }
 ]
