@@ -9,7 +9,6 @@ const {isTokenValid, isUserNotLoggedIn} = require("../middlewares/auth.middlewar
 
 //*POST "/api/auth/signup" => get data from the user and creates it inside the DB
 router.post("/signup", isUserNotLoggedIn, async (req, res, next) => {
-  console.log(req.body);
   
   const {
     firstName,
@@ -83,7 +82,6 @@ router.post("/signup", isUserNotLoggedIn, async (req, res, next) => {
     //encrypt password
     const salt = await bcrypt.genSalt(12);
     const hashPass = await bcrypt.hash(password, salt);
-    console.log(hashPass);
 
     //after every validation and get password encrypted we create the user
     await User.create({
@@ -106,7 +104,6 @@ router.post("/signup", isUserNotLoggedIn, async (req, res, next) => {
 });
 //*POST "/api/auth/login" => get credentials from user and validate
 router.post("/login", isUserNotLoggedIn, async (req, res, next) => {
-  console.log(req.body);
   //again validate that the fiels are not empty
   const { email, password } = req.body;
   if (!email || !password) {
@@ -152,7 +149,6 @@ router.post("/login", isUserNotLoggedIn, async (req, res, next) => {
 //this indicates if user is logged in or not. If logged in => who is it.
 //we need a middleware 
 router.get('/verify', isTokenValid, (req, res,next) => {
-console.log(req.payload);
 res.json({payload: req.payload})
 })
 //*PUT "/api/auth/change-password" => update password

@@ -8,7 +8,7 @@ router.get("/", async (req, res, next) => {
     try {
         // Obtener el parámetro de consulta 'category'
         const category = req.query.category;
-        console.log(req.query.category);
+
 
         if (category) {
             // Si 'category' está presente, filtrar los productos por esa categoría
@@ -26,7 +26,7 @@ router.get("/", async (req, res, next) => {
 
 //*POST "api/products/create" => create products 
 router.post('/create', isTokenValid, isAdmin, async (req, res, next) =>{
- console.log(req.body);
+
  const { name, description, price, size, color, image, category } = req.body;
      try {
   
@@ -43,7 +43,7 @@ router.post('/create', isTokenValid, isAdmin, async (req, res, next) =>{
 
 //*GET "/api/products/:productId/details" => get a specific product with all the data by its Id
 router.get("/:productId/details", async (req, res, next) =>{
-    console.log(req.params)
+
     try{
         const singleProduct = await Product.findById(req.params.productId)
         res.json(singleProduct);

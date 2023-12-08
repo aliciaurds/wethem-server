@@ -10,8 +10,7 @@ router.post("/:productId/add", isTokenValid, async (req, res, next) => {
     const { comment, rating } = req.body;
     const userId = req.payload._id;
     const { productId } = req.params;
-    console.log(userId);
-    console.log(req.params);
+
 
     // Check if the product exists
 
@@ -60,9 +59,7 @@ router.delete('/:reviewId/delete', isTokenValid, async (req, res, next) => {
       const userRole = req.payload.role;
       const review = await Review.findById(reviewId);
     
-      console.log(review); 
-      console.log(userId);
-      console.log(review.user.toString());
+    
     
       // Check if the review exists
       if (!review) {
