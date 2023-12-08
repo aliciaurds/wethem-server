@@ -3,7 +3,7 @@
 
 ## [See the App!](https://wethem-project.netlify.app/)
 
-![App Logo](./img/logo.png)
+![App Logo](./img/LogoBg.jpeg)
 
 ## Description
 
