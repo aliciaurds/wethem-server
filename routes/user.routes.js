@@ -162,4 +162,5 @@ router.delete("/delete-account", isTokenValid, async (req, res, next) => {
     next(err);
   }
 });
+
 module.exports = router;
